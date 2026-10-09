@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | ExpenSafe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="auth-page">
+<main class="auth-shell">
+    <section class="auth-left">
+        <a class="brand" href="{{ url_for('login') }}">
+            <span class="brand-icon">₹</span><span>ExpenSafe</span>
+        </a>
+
+        <div class="auth-heading">
+            <h1>Create Your Account</h1>
+            <p>Start building healthier money habits.</p>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="flash-message {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endwith %}
+
+        <form class="auth-form" action="{{ url_for('register') }}" method="POST">
+            <label for="username">Your name</label>
+            <input type="text" id="username" name="username"
+                   placeholder="Enter your name" autocomplete="name" required>
+
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email"
+                   placeholder="you@example.com" autocomplete="email" required>
+
+            <label for="password">Create password</label>
+            <input type="password" id="password" name="password"
+                   placeholder="At least 8 characters" minlength="8"
+                   autocomplete="new-password" required>
+
+            <label for="confirm_password">Confirm password</label>
+            <input type="password" id="confirm_password" name="confirm_password"
+                   placeholder="Enter password again" minlength="8"
+                   autocomplete="new-password" required>
+
+            <button type="submit" class="primary-button">Create Account →</button>
+        </form>
+
+        <p class="auth-switch">Already registered?
+            <a href="{{ url_for('login') }}">Login here</a>
+        </p>
+        <p class="auth-footnote">YOUR MONEY. YOUR GOALS. YOUR JOURNEY.</p>
+    </section>
+
+    <aside class="auth-right">
+        <div class="art-content">
+            <div class="art-top"><span>YOUR NEXT CHAPTER</span><span>●</span></div>
+            <div class="art-heading">
+                <p class="art-kicker">MEET YOUR MONEY DIFFERENTLY</p>
+                <h2>Your goals.<br>Your growth.</h2>
+                <p>Build better habits, one little step<br>at a time.</p>
+            </div>
+            <div class="illustration">
+                <div class="art-orb orb-one"></div>
+                <div class="art-orb orb-two"></div>
+                <div class="art-coin coin-a">₹</div>
+                <div class="art-coin coin-b">₹</div>
+                <div class="art-laptop">
+                    <div class="art-screen">
+                        <span>YOUR FINANCIAL JOURNEY</span>
+                        <h3>Make progress every day.</h3>
+                        <div class="art-bars">
+                            <i></i><i></i><i></i><i></i><i></i><i></i>
+                        </div>
+                    </div>
+                    <div class="art-base"></div>
+                </div>
+                <div class="art-phone">
+                    <span>SAVINGS GOAL</span><strong>₹ 5,000</strong>
+                    <div></div><div></div><div></div>
+                </div>
+            </div>
+            <div class="art-footer">
+                <span>✧</span><div><strong>A little more clarity every day.</strong>
+                <p>Welcome to ExpenSafe.</p></div>
+            </div>
+        </div>
+    </aside>
+</main>
+</body>
+</html>

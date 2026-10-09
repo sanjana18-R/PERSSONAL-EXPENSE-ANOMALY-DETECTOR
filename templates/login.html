@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | ExpenSafe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="auth-page">
+<main class="auth-shell">
+    <section class="auth-left">
+        <a class="brand" href="{{ url_for('login') }}">
+            <span class="brand-icon">₹</span><span>ExpenSafe</span>
+        </a>
+
+        <div class="auth-heading">
+            <h1>Welcome Back!</h1>
+            <p>Sign in to continue your financial journey.</p>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="flash-message {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endwith %}
+
+        <form class="auth-form" action="{{ url_for('login') }}" method="POST">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email"
+                   placeholder="you@example.com" autocomplete="email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password"
+                   placeholder="Enter your password"
+                   autocomplete="current-password" required>
+
+            <button type="submit" class="primary-button">Login →</button>
+        </form>
+
+        <div class="divider"><span></span><small>or</small><span></span></div>
+        <p class="auth-note">✦ A little more clarity with every rupee</p>
+        <p class="auth-switch">Don't have an account?
+            <a href="{{ url_for('register') }}">Register here</a>
+        </p>
+        <p class="auth-footnote">YOUR MONEY. YOUR GOALS. YOUR JOURNEY.</p>
+    </section>
+
+    <aside class="auth-right">
+        <div class="art-content">
+            <div class="art-top"><span>YOUR MONEY OVERVIEW</span><span>●</span></div>
+            <div class="art-heading">
+                <p class="art-kicker">A FRESH TAKE ON FINANCE</p>
+                <h2>Make every<br>rupee count.</h2>
+                <p>Understand your habits. Discover patterns.<br>Spend with confidence.</p>
+            </div>
+            <div class="illustration">
+                <div class="art-orb orb-one"></div>
+                <div class="art-orb orb-two"></div>
+                <div class="art-coin coin-a">₹</div>
+                <div class="art-coin coin-b">₹</div>
+                <div class="art-laptop">
+                    <div class="art-screen">
+                        <span>YOUR SPENDING INSIGHTS</span>
+                        <h3>Small steps, big progress.</h3>
+                        <div class="art-bars">
+                            <i></i><i></i><i></i><i></i><i></i><i></i>
+                        </div>
+                    </div>
+                    <div class="art-base"></div>
+                </div>
+                <div class="art-phone">
+                    <span>MONTHLY SAVINGS</span><strong>₹ 5,000</strong>
+                    <div></div><div></div><div></div>
+                </div>
+            </div>
+            <div class="art-footer">
+                <span>✧</span><div><strong>Small choices. Smarter finances.</strong>
+                <p>Every rupee has a purpose.</p></div>
+            </div>
+        </div>
+    </aside>
+</main>
+</body>
+</html>
+

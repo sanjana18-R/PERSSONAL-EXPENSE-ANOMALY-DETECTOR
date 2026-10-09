@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transactions | ExpenSafe</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="dashboard-page">
+<header class="dash-header"><a class="dash-brand" href="{{ url_for('home') }}">₹ ExpenSafe</a><a class="logout-link" href="{{ url_for('home') }}">← Home</a></header>
+<main class="home-container">
+<h1>Transactions</h1><p>Add a purchase, bill, or other money movement.</p>
+{% with messages = get_flashed_messages(with_categories=true) %}{% for category, message in messages %}<div class="flash-message {{ category }}">{{ message }}</div>{% endfor %}{% endwith %}
+<section class="panel">
+<form method="POST">
+<label>Amount (₹)<input name="amount" type="number" min="0.01" step="0.01" required></label>
+<label>Category<select name="category" id="category" onchange="document.getElementById('custom-wrap').hidden=this.value!=='Custom'">
+<option>Food & Drinks</option><option>Shopping & Style</option><option>Travel & Adventures</option><option>Entertainment</option><option>Education</option><option>Health & Wellness</option><option>Bills & Essentials</option><option>Family & Friends</option><option>Pets</option><option>Other</option><option value="Custom">Custom</option>
+</select></label>
+<label id="custom-wrap" hidden>Custom category<input name="custom_category" placeholder="Enter your own category"></label>
+<label>Merchant / Description<input name="merchant" placeholder="What did you spend on?" required></label>
+<label>Date<input name="date" type="date" value="{{ today }}" required></label>
+<button type="submit" class="primary-button">Add Transaction</button>
+</form>
+</section>
+<section class="panel"><h2>Recent transactions</h2>
+<div class="table-wrap"><table><thead><tr><th>Date</th><th>Item</th><th>Category</th><th>Amount</th><th></th></tr></thead><tbody>
+{% for tx in transactions %}<tr><td>{{ tx.date }}</td><td>{{ tx.merchant }}</td><td>{{ tx.category }}</td><td>₹{{ "%.2f"|format(tx.amount) }}</td><td><form method="POST" action="{{ url_for('delete_transaction', transaction_id=tx.id) }}"><button type="submit">Delete</button></form></td></tr>{% else %}<tr><td colspan="5">No transactions yet.</td></tr>{% endfor %}
+</tbody></table></div></section>
+</main></body></html>

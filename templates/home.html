@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | ExpenSafe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="dashboard-page">
+<header class="dash-header">
+    <a class="dash-brand" href="{{ url_for('home') }}">₹ ExpenSafe</a>
+    <div class="header-right">
+        <span>Hi, {{ username }}!</span>
+        <a class="logout-link" href="{{ url_for('logout') }}">Log out</a>
+    </div>
+</header>
+
+<main class="home-container">
+    <section class="welcome-banner">
+        <p class="eyebrow">YOUR MONEY, YOUR CONTROL</p>
+        <h1>What would you like to explore?</h1>
+        <p>Your financial journey, all in one place.</p>
+        <div class="quick-stats">
+            <div><span>Total recorded spending</span><strong>₹{{ "%.2f"|format(total) }}</strong></div>
+            <div><span>This month's spending</span><strong>₹{{ "%.2f"|format(monthly_total) }}</strong></div>
+            <div><span>Transactions tracked</span><strong>{{ transaction_count }}</strong></div>
+        </div>
+    </section>
+
+    <section class="feature-grid">
+        <a class="feature-card feature-purple" href="{{ url_for('transactions') }}">
+            <span class="feature-icon">＋</span>
+            <h2>Transactions</h2>
+            <p>Add new expenses and record your spending.</p>
+            <span class="feature-link">Manage transactions →</span>
+        </a>
+
+        <a class="feature-card feature-pink" href="{{ url_for('history') }}">
+            <span class="feature-icon">▤</span>
+            <h2>Spending History</h2>
+            <p>Look back at your purchases and spending patterns.</p>
+            <span class="feature-link">View history →</span>
+        </a>
+
+        <a class="feature-card feature-blue" href="{{ url_for('growth') }}">
+            <span class="feature-icon">↗</span>
+            <h2>Personal Growth</h2>
+            <p>Explore your habits and understand where your money goes.</p>
+            <span class="feature-link">Explore insights →</span>
+        </a>
+
+        <a class="feature-card feature-green" href="{{ url_for('savings') }}">
+            <span class="feature-icon">♡</span>
+            <h2>Savings Goals</h2>
+            <p>Set targets and keep track of your savings ambitions.</p>
+            <span class="feature-link">Build your goals →</span>
+        </a>
+
+        <a class="feature-card feature-orange" href="{{ url_for('anomalies') }}">
+            <span class="feature-icon">⌁</span>
+            <h2>Anomaly Alerts</h2>
+            <p>Review transactions that may be unusually high.</p>
+            <span class="feature-link">Review alerts →</span>
+        </a>
+    </section>
+
+    <p class="home-footer">ExpenSafe · Spend thoughtfully. Save confidently.</p>
+</main>
+</body>
+</html>

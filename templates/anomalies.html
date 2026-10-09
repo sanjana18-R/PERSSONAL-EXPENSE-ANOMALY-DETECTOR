@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Anomaly Alerts | ExpenSafe</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body class="dashboard-page"><header class="dash-header"><a class="dash-brand" href="{{ url_for('home') }}">₹ ExpenSafe</a><a class="logout-link" href="{{ url_for('home') }}">← Home</a></header>
+<main class="home-container"><h1>Anomaly Alerts</h1><p>These are potential unusual expenses to review, not confirmed fraud.</p>
+<section class="panel"><div class="table-wrap"><table><thead><tr><th>Date</th><th>Merchant</th><th>Category</th><th>Amount</th><th>Category median</th></tr></thead><tbody>
+{% for tx in alerts %}<tr><td>{{ tx.date }}</td><td>{{ tx.merchant }}</td><td>{{ tx.category }}</td><td>₹{{ "%.2f"|format(tx.amount) }}</td><td>₹{{ "%.2f"|format(tx.typical) }}</td></tr>{% else %}<tr><td colspan="5">No potential anomalies found by the current basic rule. Add more transactions to make comparisons more useful.</td></tr>{% endfor %}
+</tbody></table></div></section></main></body></html>

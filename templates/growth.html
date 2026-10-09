@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Personal Growth | ExpenSafe</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body class="dashboard-page"><header class="dash-header"><a class="dash-brand" href="{{ url_for('home') }}">₹ ExpenSafe</a><a class="logout-link" href="{{ url_for('home') }}">← Home</a></header>
+<main class="home-container"><h1>Your Personal Growth</h1><p>Small insights can help you build better spending habits.</p>
+<section class="summary"><div class="card"><p>Recorded spending</p><h2>₹{{ "%.2f"|format(total) }}</h2></div><div class="card"><p>Transactions logged</p><h2>{{ count }}</h2></div><div class="card"><p>Top spending category</p><h2>{{ top_category }}</h2></div></section>
+<section class="panel"><h2>Spending by category</h2>{% if categories %}{% for name, amount in categories.items() %}<p><strong>{{ name }}</strong> — ₹{{ "%.2f"|format(amount) }}</p>{% endfor %}{% else %}<p>Add transactions to see your category breakdown and start reflecting on your habits.</p>{% endif %}</section>
+</main></body></html>
+
