@@ -1,0 +1,148 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f5f3ff;
+    color: #25213b;
+}
+
+header {
+    padding: 30px 8%;
+    background: linear-gradient(120deg, #4c1d95, #7c3aed);
+    color: white;
+}
+
+header h1 {
+    margin-bottom: 8px;
+}
+
+header p {
+    margin-bottom: 0;
+    color: #ede9fe;
+}
+
+main {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.card, .panel {
+    background: white;
+    padding: 22px;
+    border-radius: 16px;
+    box-shadow: 0 4px 18px #24134d0c;
+}
+
+.card p {
+    color: #6b6580;
+}
+
+.card h2 {
+    color: #6d28d9;
+}
+
+.panel {
+    margin-bottom: 24px;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: end;
+}
+
+label {
+    display: flex;
+    flex: 1 1 180px;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+}
+
+input, select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #ddd6fe;
+    border-radius: 8px;
+    background: white;
+}
+
+button {
+    padding: 11px 17px;
+    border: 0;
+    border-radius: 8px;
+    background: #6d28d9;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #4c1d95;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 13px;
+    border-bottom: 1px solid #eeeaf7;
+    text-align: left;
+}
+
+th {
+    color: #6b6580;
+    font-size: 13px;
+}
+
+.alert {
+    color: #b45309;
+    font-weight: bold;
+}
+
+.normal {
+    color: #15803d;
+    font-weight: bold;
+}
+
+td small {
+    display: block;
+    max-width: 230px;
+    margin-top: 5px;
+    color: #6b6580;
+}
+
+.delete {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.note {
+    margin-top: 18px;
+    color: #6b6580;
+    font-size: 13px;
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 24px 20px;
+    }
+}
